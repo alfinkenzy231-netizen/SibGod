@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTopUp - Top Up Game Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0e17;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Animasi */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(0, 162, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px) rotate(90deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(0) translateX(20px) rotate(180deg);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(20px) translateX(10px) rotate(270deg);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 14, 23, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 162, 255, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 28px;
+            color: #00a2ff;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            background: linear-gradient(to right, #00a2ff, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #00a2ff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #00a2ff;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            background: transparent;
+            border: 1px solid #00a2ff;
+            color: #00a2ff;
+        }
+
+        .btn-login:hover {
+            background: rgba(0, 162, 255, 0.1);
+        }
+
+        .btn-register {
+            background: linear-gradient(to right, #00a2ff, #0066ff);
+            border: none;
+            color: white;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 162, 255, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 5%;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #00a2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .search-bar {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 162, 255, 0.2);
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 15px 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 0 25px;
+            background: linear-gradient(to right, #00a2ff, #0066ff);
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-bar button:hover {
+            background: linear-gradient(to right, #0066ff, #0044cc);
+        }
+
+        /* Game List */
+        .game-section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #00a2ff, #0066ff);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background: rgba(20, 25, 40, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0, 162, 255, 0.2);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 162, 255, 0.2);
+            border-color: rgba(0, 162, 255, 0.5);
+        }
+
+        .game-image {
+            height: 150px;
+            background: linear-gradient(135deg, #00a2ff, #0066ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .game-info {
+            padding: 20px;
+        }
+
+        .game-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .game-info p {
+            color: #b0b0b0;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .btn-topup {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 162, 255, 0.1);
+            border: 1px solid #00a2ff;
+            color: #00a2ff;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-topup:hover {
+            background: #00a2ff;
+            color: white;
+        }
+
+        /* Promo Section */
+        .promo-section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .promo-card {
+            background: linear-gradient(135deg, rgba(0, 162, 255, 0.1), rgba(0, 102, 255, 0.1));
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(0, 162, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-card::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 162, 255, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .promo-card::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 50%;
+            bottom: -75px;
+            left: -75px;
+        }
+
+        .promo-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .promo-card p {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-promo {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, #00a2ff, #0066ff);
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-promo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 162, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(5, 10, 20, 0.9);
+            padding: 60px 5% 30px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(0, 162, 255, 0.3);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #00a2ff;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #00a2ff;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: #b0b0b0;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #00a2ff;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #b0b0b0;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .game-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .user-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animasi -->
+    <div class="background-animation">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-gamepad"></i>
+            <h1>GameTopUp</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Game</a></li>
+                <li><a href="#">Promo</a></li>
+                <li><a href="#">Cara Top Up</a></li>
+                <li><a href="#">Kontak</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <button class="btn btn-login">Masuk</button>
+            <button class="btn btn-register">Daftar</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Top Up Game Favoritmu dengan Mudah</h2>
+        <p>Dapatkan diamond, koin, dan item game lainnya dengan proses cepat dan aman. Dukungan untuk berbagai game populer.</p>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Cari game yang ingin di-top up...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </section>
+
+    <!-- Game List -->
+    <section class="game-section">
+        <h2 class="section-title">Game Populer</h2>
+        <div class="game-grid">
+            <!-- Game 1 -->
+            <div class="game-card">
+                <div class="game-image">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="game-info">
+                    <h3>Mobile Legends</h3>
+                    <p>Diamond ML dengan proses instan</p>
+                    <button class="btn-topup">Top Up Sekarang</button>
+                </div>
+            </div>
+            
+            <!-- Game 2 -->
+            <div class="game-card">
+                <div class="game-image">
+                    <i class="fas fa-ghost"></i>
+                </div>
+                <div class="game-info">
+                    <h3>Genshin Impact</h3>
+                    <p>Genesis Crystal dan Welkin Moon</p>
+                    <button class="btn-topup">Top Up Sekarang</button>
+                </div>
+            </div>
+            
+            <!-- Game 3 -->
+            <div class="game-card">
+                <div class="game-image">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="game-info">
+                    <h3>Valorant</h3>
+                    <p>Points untuk skin dan battlepass</p>
+                    <button class="btn-topup">Top Up Sekarang</button>
+                </div>
+            </div>
+            
+            <!-- Game 4 -->
+            <div class="game-card">
+                <div class="game-image">
+                    <i class="fas fa-battle-net"></i>
+                </div>
+                <div class="game-info">
+                    <h3>PUBG Mobile</h3>
+                    <p>UC untuk berbagai item menarik</p>
+                    <button class="btn-topup">Top Up Sekarang</button>
+                </div>
+            </div>
+            
+            <!-- Game 5 -->
+            <div class="game-card">
+                <div class="game-image">
+                    <i class="fas fa-dragon"></i>
+                </div>
+                <div class="game-info">
+                    <h3>Free Fire</h3>
+                    <p>Diamond FF dengan harga terbaik</p>
+                    <button class="btn-topup">Top Up Sekarang</button>
+                </div>
+            </div>
+            
+            <!-- Game 6 -->
+            <div class="game-card">
+                <div class="game-image">
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <div class="game-info">
+                    <h3>Call of Duty Mobile</h3>
+                    <p>CP untuk berbagai kebutuhan game</p>
+                    <button class="btn-topup">Top Up Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Section -->
+    <section class="promo-section">
+        <h2 class="section-title">Promo Spesial</h2>
+        <div class="promo-card">
+            <h3>Bonus 20% untuk Pembelian Pertama!</h3>
+            <p>Dapatkan bonus tambahan 20% untuk pembelian pertama di GameTopUp. Promo berlaku untuk semua game hingga 30 Juni 2023.</p>
+            <button class="btn-promo">Lihat Promo Lainnya</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>GameTopUp</h4>
+                <p>Platform top up game terpercaya dengan proses cepat dan aman. Dukungan untuk berbagai game populer.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Layanan</h4>
+                <ul>
+                    <li><a href="#">Mobile Legends</a></li>
+                    <li><a href="#">Genshin Impact</a></li>
+                    <li><a href="#">Valorant</a></li>
+                    <li><a href="#">PUBG Mobile</a></li>
+                    <li><a href="#">Free Fire</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Bantuan</h4>
+                <ul>
+                    <li><a href="#">Cara Top Up</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">Hubungi Kami</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Metode Pembayaran</h4>
+                <ul>
+                    <li><a href="#">Bank Transfer</a></li>
+                    <li><a href="#">E-Wallet</a></li>
+                    <li><a href="#">Kartu Kredit</a></li>
+                    <li><a href="#">QRIS</a></li>
+                    <li><a href="#">Retail</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 GameTopUp. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Membuat partikel animasi
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size
+                const size = Math.random() * 60 + 20;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+            
