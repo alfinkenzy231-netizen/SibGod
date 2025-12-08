@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Price List Gift BB Coin Mobile Legends</title>
+    <title>Top Up Mobile Legends - Diamond Termurah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -12,391 +13,688 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
-            background: linear-gradient(-45deg, #000000, #0a0a2a, #001233, #001845);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
+        :root {
+            --primary: #2a0a5e;
+            --secondary: #ff6b00;
+            --accent: #00c3ff;
+            --light: #f5f5ff;
+            --dark: #1a052b;
+            --success: #00c853;
+            --warning: #ff9800;
+            --danger: #f44336;
         }
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: var(--light);
+            min-height: 100vh;
+            padding-bottom: 20px;
         }
 
         .container {
-            max-width: 800px;
-            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(0, 10, 46, 0.7);
-            border-radius: 15px;
-            border: 2px solid #00a8ff;
-            box-shadow: 0 0 15px rgba(0, 168, 255, 0.5);
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #00a8ff;
-            text-shadow: 0 0 10px rgba(0, 168, 255, 0.7);
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .price-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 30px;
         }
 
-        .price-item {
-            background: rgba(0, 10, 46, 0.7);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            border: 2px solid #00a8ff;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 0 10px rgba(0, 168, 255, 0.3);
-        }
-
-        .price-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(0, 168, 255, 0.7);
-        }
-
-        .price-item h3 {
-            color: #00a8ff;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .price-item .price {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-
-        .buy-btn {
-            background: linear-gradient(to right, #00a8ff, #0056b3);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-            width: 100%;
-        }
-
-        .buy-btn:hover {
-            background: linear-gradient(to right, #0056b3, #00a8ff);
-            box-shadow: 0 0 15px rgba(0, 168, 255, 0.7);
-        }
-
-        .form-section {
-            background: rgba(0, 10, 46, 0.7);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 2px solid #00a8ff;
-            box-shadow: 0 0 15px rgba(0, 168, 255, 0.5);
-        }
-
-        .form-section h2 {
-            color: #00a8ff;
-            margin-bottom: 20px;
-            text-align: center;
-            text-shadow: 0 0 10px rgba(0, 168, 255, 0.7);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #00a8ff;
-            background: rgba(0, 20, 60, 0.8);
-            color: white;
-            font-size: 1rem;
-        }
-
-        .payment-methods {
-            background: rgba(0, 10, 46, 0.7);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 2px solid #00a8ff;
-            box-shadow: 0 0 15px rgba(0, 168, 255, 0.5);
-        }
-
-        .payment-methods h2 {
-            color: #00a8ff;
-            margin-bottom: 20px;
-            text-align: center;
-            text-shadow: 0 0 10px rgba(0, 168, 255, 0.7);
-        }
-
-        .payment-options {
+        .logo-container {
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
             justify-content: center;
             gap: 15px;
         }
 
-        .payment-option {
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            background: rgba(0, 20, 60, 0.8);
-            padding: 15px;
-            border-radius: 10px;
-            width: 120px;
-            transition: transform 0.3s;
-        }
-
-        .payment-option:hover {
-            transform: scale(1.05);
-        }
-
-        .payment-option img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-        }
-
-        .payment-option span {
+            justify-content: center;
+            font-size: 24px;
             font-weight: bold;
-            font-size: 0.9rem;
         }
 
-        .whatsapp-section {
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
             text-align: center;
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(0, 10, 46, 0.7);
-            border-radius: 15px;
-            border: 2px solid #00a8ff;
-            box-shadow: 0 0 15px rgba(0, 168, 255, 0.5);
+            margin-top: 5px;
+            color: #aaa;
+            font-size: 14px;
         }
 
-        .whatsapp-section h3 {
-            color: #00a8ff;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(0, 168, 255, 0.7);
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        .whatsapp-btn {
-            background: linear-gradient(to right, #25D366, #128C7E);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-            display: inline-flex;
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Form Section */
+        .form-section, .payment-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--accent);
+            display: flex;
             align-items: center;
             gap: 10px;
+            border-bottom: 2px solid rgba(0, 195, 255, 0.3);
+            padding-bottom: 8px;
+        }
+
+        .section-title i {
+            color: var(--secondary);
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ddd;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 16px;
             transition: all 0.3s;
         }
 
-        .whatsapp-btn:hover {
-            background: linear-gradient(to right, #128C7E, #25D366);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.7);
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 195, 255, 0.2);
         }
 
-        .footer {
+        .diamond-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .diamond-option {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px 10px;
             text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            color: #aaa;
-            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        @media (max-width: 600px) {
-            .price-list {
-                grid-template-columns: 1fr;
+        .diamond-option:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .diamond-option.active {
+            border-color: var(--secondary);
+            background: rgba(255, 107, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
+        }
+
+        .diamond-amount {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .diamond-price {
+            font-size: 16px;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .payment-method {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-method:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .payment-method.active {
+            border-color: var(--secondary);
+            background: rgba(255, 107, 0, 0.1);
+        }
+
+        .payment-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .payment-name {
+            font-weight: 600;
+            color: white;
+        }
+
+        .payment-details {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+            border-left: 4px solid var(--secondary);
+            display: none;
+        }
+
+        .payment-details.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .payment-info {
+            margin-bottom: 10px;
+        }
+
+        .payment-info-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .payment-info-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            word-break: break-all;
+        }
+
+        .qris-container {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .qris-image {
+            max-width: 250px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .note {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .note strong {
+            color: var(--warning);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(to right, var(--secondary), #ff8c00);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 25px;
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.5);
+            background: linear-gradient(to right, #ff8c00, var(--secondary));
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
             }
             
-            .payment-options {
-                flex-direction: column;
-                align-items: center;
+            .form-section, .payment-section {
+                padding: 20px 15px;
             }
             
-            .payment-option {
-                width: 100%;
-                max-width: 200px;
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .diamond-options, .payment-methods {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>GIFT BB COIN MOBILE LEGENDS</h1>
-            <p>Top up BB Coin dengan harga terbaik dan proses cepat</p>
-        </div>
+        <header>
+            <div class="logo-container">
+                <div class="logo">ML</div>
+                <div class="logo-text">MOBILE LEGENDS</div>
+            </div>
+            <div class="tagline">Top Up Diamond Aman, Cepat, dan Terpercaya</div>
+        </header>
 
-        <div class="price-list">
-            <div class="price-item">
-                <h3>5K BBC</h3>
-                <div class="price">Rp 18.000</div>
-                <button class="buy-btn" data-package="5K BBC" data-price="18000">BELI SEKARANG</button>
-            </div>
-            <div class="price-item">
-                <h3>10K BBC</h3>
-                <div class="price">Rp 36.000</div>
-                <button class="buy-btn" data-package="10K BBC" data-price="36000">BELI SEKARANG</button>
-            </div>
-            <div class="price-item">
-                <h3>15K BBC</h3>
-                <div class="price">Rp 54.000</div>
-                <button class="buy-btn" data-package="15K BBC" data-price="54000">BELI SEKARANG</button>
-            </div>
-            <div class="price-item">
-                <h3>20K BBC</h3>
-                <div class="price">Rp 72.000</div>
-                <button class="buy-btn" data-package="20K BBC" data-price="72000">BELI SEKARANG</button>
-            </div>
-            <div class="price-item">
-                <h3>25K BBC</h3>
-                <div class="price">Rp 90.000</div>
-                <button class="buy-btn" data-package="25K BBC" data-price="90000">BELI SEKARANG</button>
-            </div>
-        </div>
+        <div class="main-content">
+            <!-- Form Pemesanan -->
+            <section class="form-section">
+                <h2 class="section-title"><i class="fas fa-gamepad"></i> Data Pemesanan</h2>
+                
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label class="form-label" for="userId">ID Mobile Legends</label>
+                        <input type="text" id="userId" class="form-input" placeholder="Contoh: 123456789 (1234)" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="serverId">Server ID</label>
+                        <input type="text" id="serverId" class="form-input" placeholder="Contoh: 1234" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="nickname">Nickname</label>
+                        <input type="text" id="nickname" class="form-input" placeholder="Nickname di Mobile Legends" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="whatsapp">Nomor WhatsApp Anda</label>
+                        <input type="text" id="whatsapp" class="form-input" placeholder="Contoh: 6281234567890" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Pilih Jumlah Diamond</label>
+                        <div class="diamond-options">
+                            <div class="diamond-option" data-amount="86" data-price="25,000">
+                                <div class="diamond-amount">86 Diamond</div>
+                                <div class="diamond-price">Rp 25,000</div>
+                            </div>
+                            <div class="diamond-option active" data-amount="172" data-price="50,000">
+                                <div class="diamond-amount">172 Diamond</div>
+                                <div class="diamond-price">Rp 50,000</div>
+                            </div>
+                            <div class="diamond-option" data-amount="257" data-price="75,000">
+                                <div class="diamond-amount">257 Diamond</div>
+                                <div class="diamond-price">Rp 75,000</div>
+                            </div>
+                            <div class="diamond-option" data-amount="344" data-price="100,000">
+                                <div class="diamond-amount">344 Diamond</div>
+                                <div class="diamond-price">Rp 100,000</div>
+                            </div>
+                            <div class="diamond-option" data-amount="429" data-price="125,000">
+                                <div class="diamond-amount">429 Diamond</div>
+                                <div class="diamond-price">Rp 125,000</div>
+                            </div>
+                            <div class="diamond-option" data-amount="514" data-price="150,000">
+                                <div class="diamond-amount">514 Diamond</div>
+                                <div class="diamond-price">Rp 150,000</div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="diamondAmount" value="172">
+                        <input type="hidden" id="diamondPrice" value="50,000">
+                    </div>
+                    
+                    <button type="button" id="submitOrder" class="submit-btn">
+                        <i class="fab fa-whatsapp"></i> LANJUTKAN KE PEMBAYARAN
+                    </button>
+                </form>
+            </section>
 
-        <div class="form-section">
-            <h2>DATA AKUN MOBILE LEGENDS</h2>
-            <div class="form-group">
-                <label for="player-id">ID Player</label>
-                <input type="text" id="player-id" placeholder="Masukkan ID Player">
-            </div>
-            <div class="form-group">
-                <label for="server-id">Server ID</label>
-                <input type="text" id="server-id" placeholder="Masukkan Server ID">
-            </div>
-        </div>
-
-        <div class="payment-methods">
-            <h2>METODE PEMBAYARAN</h2>
-            <div class="payment-options">
-                <div class="payment-option">
-                    <div style="width:50px;height:50px;background:#008FE5;border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">DANA</div>
-                    <span>DANA</span>
+            <!-- Metode Pembayaran -->
+            <section class="payment-section">
+                <h2 class="section-title"><i class="fas fa-credit-card"></i> Metode Pembayaran</h2>
+                
+                <div class="payment-methods">
+                    <div class="payment-method active" data-method="qris">
+                        <div class="payment-icon"><i class="fas fa-qrcode"></i></div>
+                        <div class="payment-name">QRIS</div>
+                    </div>
+                    <div class="payment-method" data-method="dana">
+                        <div class="payment-icon"><i class="fas fa-wallet"></i></div>
+                        <div class="payment-name">DANA</div>
+                    </div>
+                    <div class="payment-method" data-method="ovo">
+                        <div class="payment-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="payment-name">OVO</div>
+                    </div>
+                    <div class="payment-method" data-method="gopay">
+                        <div class="payment-icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <div class="payment-name">GOPAY</div>
+                    </div>
+                    <div class="payment-method" data-method="shopeepay">
+                        <div class="payment-icon"><i class="fas fa-shopping-bag"></i></div>
+                        <div class="payment-name">SHOPEEPAY</div>
+                    </div>
+                    <div class="payment-method" data-method="seabank">
+                        <div class="payment-icon"><i class="fas fa-university"></i></div>
+                        <div class="payment-name">SEABANK</div>
+                    </div>
+                    <div class="payment-method" data-method="bankjago">
+                        <div class="payment-icon"><i class="fas fa-landmark"></i></div>
+                        <div class="payment-name">BANK JAGO</div>
+                    </div>
                 </div>
-                <div class="payment-option">
-                    <div style="width:50px;height:50px;background:#00A6DF;border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">GOPAY</div>
-                    <span>GOPAY</span>
+                
+                <!-- QRIS Details -->
+                <div class="payment-details active" id="qris-details">
+                    <div class="payment-info">
+                        <div class="payment-info-title">Scan QR Code berikut:</div>
+                        <div class="qris-container">
+                            <img src="https://files.catbox.moe/b3xttn.png" alt="QRIS Payment" class="qris-image">
+                        </div>
+                    </div>
+                    <div class="note">
+                        <strong>Catatan:</strong> Setelah melakukan pembayaran via QRIS, segera lakukan konfirmasi dengan mengirimkan bukti transfer ke WhatsApp kami.
+                    </div>
                 </div>
-                <div class="payment-option">
-                    <div style="width:50px;height:50px;background:#0056A3;border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">SEA</div>
-                    <span>SEABANK</span>
+                
+                <!-- Dana Details -->
+                <div class="payment-details" id="dana-details">
+                    <div class="payment-info">
+                        <div class="payment-info-title">Nomor DANA:</div>
+                        <div class="payment-info-value">087762133437</div>
+                    </div>
+                    <div class="payment-info">
+                        <div class="payment-info-title">Atas Nama:</div>
+                        <div class="payment-info-value">SIBRA AMULISI</div>
+                    </div>
+                    <div class="note">
+                        <strong>Catatan:</strong> Setelah melakukan transfer, segera lakukan konfirmasi dengan mengirimkan bukti transfer ke WhatsApp kami.
+                    </div>
                 </div>
-                <div class="payment-option">
-                    <div style="width:50px;height:50px;background:#00B900;border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;">QR</div>
-                    <span>QRIS</span>
+                
+                <!-- OVO Details -->
+                <div class="payment-details" id="ovo-details">
+                    <div class="payment-info">
+                        <div class="payment-info-title">Nomor OVO:</div>
+                        <div class="payment-info-value">087762133437</div>
+                    </div>
+                    <div class="payment-info">
+                        <div class="payment-info-title">Atas Nama:</div>
+                        <div class="payment-info-value">SIBRA AMULISI</div>
+                    </div>
+                    <div class="note">
+                        <strong>Catatan:</strong> Setelah melakukan transfer, segera lakukan konfirmasi dengan mengirimkan bukti transfer ke WhatsApp kami.
+                    </div>
+                </div>
+                
+                <!-- Gopay Details -->
+                <div class="payment-details" id="gopay-details">
+                    <div class="payment-info">
+                        <div class="payment-info-title">Nomor GOPAY:</div>
+                        <div class="payment-info-value">087862600313</div>
+                    </div>
+                    <div class="payment-info">
+                        <div class="payment-info-title">Atas Nama:</div>
+                        <div class="payment-info-value">SIBRA AMULISI</div>
+                    </div>
+                    <div class="note">
+                        <strong>Catatan:</strong> Setelah melakukan transfer, segera lakukan konfirmasi dengan mengirimkan bukti transfer ke WhatsApp kami.
+                    </div>
+                </div>
+                
+                <!-- Shopeepay Details -->
+                <div class="payment-details" id="shopeepay-details">
+                    <div class="payment-info">
+                        <div class="payment-info-title">Nomor SHOPEEPAY:</div>
+                        <div class="payment-info-value">087862600313</div>
+                    </div>
+                    <div class="payment-info">
+                        <div class="payment-info-title">Atas Nama:</div>
+                        <div class="payment-info-value">SIBRA AMULISI</div>
+                    </div>
+                    <div class="note">
+                        <strong>Catatan:</strong> Setelah melakukan transfer, segera lakukan konfirmasi dengan mengirimkan bukti transfer ke WhatsApp kami.
+                    </div>
+                </div>
+                
+                <!-- Seabank Details -->
+                <div class="payment-details" id="seabank-details">
+                    <div class="payment-info">
+                        <div class="payment-info-title">Nomor Rekening:</div>
+                        <div class="payment-info-value">901125967718</div>
+                    </div>
+                    <div class="payment-info">
+                        <div class="payment-info-title">Atas Nama:</div>
+                        <div class="payment-info-value">SIBRA AMULISI</div>
+                    </div>
+                    <div class="note">
+                        <strong>Catatan:</strong> Setelah melakukan transfer, segera lakukan konfirmasi dengan mengirimkan bukti transfer ke WhatsApp kami.
+                    </div>
+                </div>
+                
+                <!-- Bank Jago Details -->
+                <div class="payment-details" id="bankjago-details">
+                    <div class="payment-info">
+                        <div class="payment-info-title">Nomor Rekening:</div>
+                        <div class="payment-info-value">102672395274</div>
+                    </div>
+                    <div class="payment-info">
+                        <div class="payment-info-title">Atas Nama:</div>
+                        <div class="payment-info-value">SIBRA AMULISI</div>
+                    </div>
+                    <div class="note">
+                        <strong>Catatan:</strong> Setelah melakukan transfer, segera lakukan konfirmasi dengan mengirimkan bukti transfer ke WhatsApp kami.
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <strong>Penting:</strong> Setelah melakukan pembayaran, data pemesanan Anda akan otomatis terkirim ke WhatsApp kami. Pastikan Anda juga mengirimkan bukti transfer ke nomor WhatsApp <strong>6287862600313</strong> untuk proses verifikasi.
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2023 Top Up Mobile Legends. Layanan top up diamond resmi dan terpercaya.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp: 6287862600313</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-user"></i>
+                    <span>Admin: Sibra Amulisi</span>
                 </div>
             </div>
-        </div>
-
-        <div class="whatsapp-section">
-            <h3>PESAN OTOMATIS TERKIRIM KE WHATSAPP</h3>
-            <button class="whatsapp-btn" id="whatsapp-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"></path>
-                </svg>
-                KIRIM VIA WHATSAPP
-            </button>
-        </div>
-
-        <div class="footer">
-            <p>&copy; 2023 Gift BB Coin Mobile Legends. All rights reserved.</p>
-        </div>
+        </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const buyButtons = document.querySelectorAll('.buy-btn');
-            const whatsappButton = document.getElementById('whatsapp-btn');
-            
-            let selectedPackage = '';
-            let selectedPrice = '';
-            
-            // Menangani klik pada tombol beli
-            buyButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    selectedPackage = this.getAttribute('data-package');
-                    selectedPrice = this.getAttribute('data-price');
-                    
-                    // Highlight tombol yang dipilih
-                    buyButtons.forEach(btn => btn.style.background = 'linear-gradient(to right, #00a8ff, #0056b3)');
-                    this.style.background = 'linear-gradient(to right, #0056b3, #00a8ff)';
-                    
-                    alert(`Anda memilih paket ${selectedPackage} seharga Rp ${selectedPrice}`);
+        // Pilihan Diamond
+        document.querySelectorAll('.diamond-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Hapus kelas active dari semua opsi
+                document.querySelectorAll('.diamond-option').forEach(opt => {
+                    opt.classList.remove('active');
                 });
+                
+                // Tambah kelas active ke opsi yang dipilih
+                this.classList.add('active');
+                
+                // Update nilai hidden input
+                document.getElementById('diamondAmount').value = this.getAttribute('data-amount');
+                document.getElementById('diamondPrice').value = this.getAttribute('data-price');
             });
+        });
+
+        // Pilihan Metode Pembayaran
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                const methodName = this.getAttribute('data-method');
+                
+                // Hapus kelas active dari semua metode
+                document.querySelectorAll('.payment-method').forEach(mtd => {
+                    mtd.classList.remove('active');
+                });
+                
+                // Tambah kelas active ke metode yang dipilih
+                this.classList.add('active');
+                
+                // Sembunyikan semua detail pembayaran
+                document.querySelectorAll('.payment-details').forEach(detail => {
+                    detail.classList.remove('active');
+                });
+                
+                // Tampilkan detail pembayaran yang dipilih
+                document.getElementById(`${methodName}-details`).classList.add('active');
+            });
+        });
+
+        // Submit Form ke WhatsApp
+        document.getElementById('submitOrder').addEventListener('click', function() {
+            // Ambil data dari form
+            const userId = document.getElementById('userId').value.trim();
+            const serverId = document.getElementById('serverId').value.trim();
+            const nickname = document.getElementById('nickname').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const diamondAmount = document.getElementById('diamondAmount').value;
+            const diamondPrice = document.getElementById('diamondPrice').value;
             
-            // Menangani klik tombol WhatsApp
-            whatsappButton.addEventListener('click', function() {
-                const playerId = document.getElementById('player-id').value;
-                const serverId = document.getElementById('server-id').value;
-                
-                if (!playerId || !serverId) {
-                    alert('Harap isi ID Player dan Server ID terlebih dahulu!');
-                    return;
-                }
-                
-                if (!selectedPackage) {
-                    alert('Harap pilih paket terlebih dahulu!');
-                    return;
-                }
-                
-                // Format pesan WhatsApp
-                const message = `Halo, saya ingin membeli ${selectedPackage} untuk Mobile Legends.\n\nID: ${playerId}\nServer: ${serverId}\n\nSilakan konfirmasi ketersediaan dan proses pembayaran.`;
-                
-                // Encode pesan untuk URL
-                const encodedMessage = encodeURIComponent(message);
-                
-                // Nomor WhatsApp
-                const phoneNumber = '087762133437';
-                
-                // Membuka WhatsApp dengan pesan yang sudah disiapkan
-                window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+            // Validasi form
+            if (!userId || !serverId || !nickname || !whatsapp) {
+                alert('Harap isi semua data pemesanan!');
+                return;
+            }
+            
+            // Ambil metode pembayaran yang aktif
+            const activeMethod = document.querySelector('.payment-method.active');
+            const paymentMethod = activeMethod ? activeMethod.querySelector('.payment-name').textContent : 'QRIS';
+            
+            // Format pesan untuk WhatsApp
+            const phoneNumber = '6287862600313'; // Nomor WhatsApp tujuan
+            
+            let message = `*DATA TOP UP MOBILE LEGENDS*%0A`;
+            message += `=========================%0A`;
+            message += `*ID:* ${userId}%0A`;
+            message += `*Server ID:* ${serverId}%0A`;
+            message += `*Nickname:* ${nickname}%0A`;
+            message += `*Jumlah Diamond:* ${diamondAmount} Diamond%0A`;
+            message += `*Harga:* Rp ${diamondPrice}%0A`;
+            message += `*Metode Pembayaran:* ${paymentMethod}%0A`;
+            message += `*No. WhatsApp Pembeli:* ${whatsapp}%0A`;
+            message += `=========================%0A`;
+            message += `*PENTING:* Setelah transfer, kirim bukti transfer ke nomor ini untuk proses verifikasi.`;
+            
+            // Buat URL WhatsApp
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+            
+            // Buka WhatsApp di tab baru
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form (opsional)
+            document.getElementById('orderForm').reset();
+            
+            // Reset pilihan diamond ke default
+            document.querySelectorAll('.diamond-option').forEach(opt => {
+                opt.classList.remove('active');
             });
+            document.querySelector('.diamond-option[data-amount="172"]').classList.add('active');
+            document.getElementById('diamondAmount').value = '172';
+            document.getElementById('diamondPrice').value = '50,000';
+            
+            // Tampilkan pesan konfirmasi
+            alert('Terima kasih! Data pemesanan Anda telah dikirim ke WhatsApp kami. Jangan lupa untuk mengirimkan bukti transfer untuk proses verifikasi.');
         });
     </script>
 </body>
